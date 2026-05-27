@@ -5,7 +5,9 @@ Class {
 		'client',
 		'baseUrl',
 		'model',
-		'thinking'
+		'thinking',
+		'networkStream',
+		'response'
 	],
 	#category : 'LocalLM-Model',
 	#package : 'LocalLM',
@@ -24,24 +26,32 @@ LocalClient >> baseUrl: anObject [
 
 { #category : 'as yet unclassified' }
 LocalClient >> chat: messages [
-	|payload response|
+	|payload |
 	payload := Dictionary new
 		at: #model put: self model;
-		at: #stream put: false;
+		at: #stream put: true;
 		at: #think put: thinking;
 		at: #messages put: messages;
 		yourself.
 		
-	response := client 
+	response := ''.
+	client 
+		streaming: true;
 		timeout: 180;
 		url: baseUrl, '/api/chat';
 		entity: ((ZnEntity text:
 			(STONJSON toString: payload))
 			contentType: ZnMimeType applicationJson;
 		contentType: ZnMimeType applicationJson);
-		post;
-		response.
-	^STONJSON fromString: response entity string
+		post.
+		networkStream := ZnCharacterReadStream on: client contents.
+		[ networkStream atEnd ] whileFalse: [ 
+
+    | line |
+    line := networkStream nextLine.
+	   	response := response, line.
+		].
+		client close.
 ]
 
 { #category : 'as yet unclassified' }
