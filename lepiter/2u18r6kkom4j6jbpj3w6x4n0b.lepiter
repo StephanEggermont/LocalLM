@@ -18,7 +18,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2026-05-27T16:00:49.830846+02:00"
+						"dateAndTimeString" : "2026-05-28T15:54:10.955053+02:00"
 					}
 				},
 				"editEmail" : {
@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2026-05-27T16:00:57.33401+02:00"
+						"dateAndTimeString" : "2026-05-28T16:03:20.245612+02:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,44 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "client := ZnClient new"
+				"string" : "The large cloud LLM suppliers provide lots of different ways of working with an LLM. From the chat interface of ChatGPT to the IDEs of Cursor and CoPilot to the CLI of Claude code, there are many different ways of using an LLM. You can use skills, tool calls agentic flows and mcps. How do they actually work? Getting a deep understanding of how this is all implemented helps understanding how to solve real-world problems. It all starts with a prompt and a chat. "
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-05-28T16:03:59.110014+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-05-28T16:07:40.171112+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "RTqWyTrXQKCA4DmzN6oByQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "The chat with an LLM is exposed as a web service. With Ollama it runs by default on port 11434 on localhost. There are two different services for it: one is at /api/chat. In a JSON string we describe which model we want to use, if we want to wait for an answer or get a stream of partial answers (stream), if we are interested in the reasoning or only the answer (think). "
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -66,14 +103,51 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2026-05-27T16:29:35.881179+02:00"
+						"dateAndTimeString" : "2026-05-28T16:49:44.334424+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "HCBoQn8zTRmAKZr47WBuNA=="
 				},
-				"code" : "client := LocalClient new.\rresult := client chat: {Dictionary new\r\tat: #role put: 'user';\r\tat: #content put: 'How does TDD work?';\r\tyourself}.\r\t"
+				"code" : "client := LocalClient mac.\rresult := client chat: {(AgentMessage user: 'How does TDD work?') asDictionary}.\r((STONJSON fromString: (result response)) at: #message) at: #content"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-05-28T16:09:18.973126+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-05-28T16:10:28.861986+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "oaGpJw71QLWu2EEvuzFh8A=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "ZnClient supports streaming, and sadly the different tools provide different behaviors. ollama's /api/chat provides a line based json format"
 			}
 		]
 	},

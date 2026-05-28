@@ -14,6 +14,21 @@ Class {
 	#tag : 'Model'
 }
 
+{ #category : 'as yet unclassified' }
+LocalClient class >> linux [
+	^self new	model:'qwen3.6:35b';
+		yourself
+
+]
+
+{ #category : 'as yet unclassified' }
+LocalClient class >> mac [
+	^self new
+		model:'qwen3.6:35b-a3b-coding-mxfp8';
+		yourself
+
+]
+
 { #category : 'accessing' }
 LocalClient >> baseUrl [
 	^ baseUrl
@@ -29,7 +44,7 @@ LocalClient >> chat: messages [
 	|payload |
 	payload := Dictionary new
 		at: #model put: self model;
-		at: #stream put: true;
+		at: #stream put: false;
 		at: #think put: thinking;
 		at: #messages put: messages;
 		yourself.
@@ -58,7 +73,7 @@ LocalClient >> chat: messages [
 LocalClient >> initialize [
 	client := ZnClient new.
 	baseUrl := 'http://localhost:11434'.
-	model := 'qwen3.6:35b'.
+	model := 'qwen3.6:35b-a3b-coding-mxfp8'.
 	thinking := false
 ]
 
@@ -70,6 +85,16 @@ LocalClient >> model [
 { #category : 'accessing' }
 LocalClient >> model: anObject [
 	model := anObject
+]
+
+{ #category : 'accessing' }
+LocalClient >> response [
+	^ response
+]
+
+{ #category : 'accessing' }
+LocalClient >> response: anObject [
+	^ response := anObject
 ]
 
 { #category : 'accessing' }
